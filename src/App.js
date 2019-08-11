@@ -1,9 +1,10 @@
-import React, { useSate } from 'react';
-import './App.css';
+import React, { useState } from 'react';
+import Hours from './components/Hours';
+import Minutes from './components/Minutes';
 
 function App() {
   let [hoursToWakeUp, setHoursToWakeUp] = useState(0);
-  let [minutesToWakeUp, setMinutesToWakeUp] = useSate(0);
+  let [minutesToWakeUp, setMinutesToWakeUp] = useState(0);
 
   const updateMinutesToWapeUp = e => {
 
@@ -11,6 +12,15 @@ function App() {
   return (
     <div className="App">
       <h1>Calculate sleep cycles</h1>
+      <div>
+        <Hours />
+        <Minutes />
+      </div>
+      <footer>
+        <div>
+          <span>Created by snoh666</span>
+        </div>
+      </footer>
     </div>
   );
 }
