@@ -7,4 +7,20 @@ body{
   font-family: 'Open Sans',
   sans-serif;
   font-size: 31px;
+  background: #2c3e50;
+  color: #7f8c8d;
+}
+.App{
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+footer{
+  width: 100%;
+  padding: 10px 0;
+  background: #34495e;
+  text-align: center;
 }
