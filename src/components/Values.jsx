@@ -24,7 +24,7 @@ function Values({ setHours, setMinutes, setAm }) {
   }
 
   return (
-    <div>
+    <div className="Values">
       <select id="hours" onChange={updateHours}>
         <option value="null">(hour)</option>
         <option value="1">1</option>
