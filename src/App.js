@@ -1,23 +1,18 @@
 import React, { useState } from 'react';
-import Hours from './components/Hours';
-import Minutes from './components/Minutes';
+import Values from './components/Values';
+import Result from './components/Result';
 
 function App() {
-  let [hoursToWakeUp, setHoursToWakeUp] = useState(0);
-  let [minutesToWakeUp, setMinutesToWakeUp] = useState(0);
+  let [hoursToWakeUp, setHoursToWakeUp] = useState(1);
+  let [minutesToWakeUp, setMinutesToWakeUp] = useState(1);
+  let [isAm, setIsAm] = useState(true);
 
-  const updateMinutesToWapeUp = e => {
-
-  }
   return (
     <div className="App">
       <h1>Calculate sleep cycles</h1>
       <div className="components-box">
-        <Hours />
-        <Minutes />
-        <div className="result">
-          { `Hours: ${hoursToWakeUp}, Minutes: ${minutesToWakeUp}` }
-        </div>
+        <Values setHours={setHoursToWakeUp} setMinutes={setMinutesToWakeUp} setAm={setIsAm} />
+        <Result hours={hoursToWakeUp} minutes={minutesToWakeUp} Am={isAm} />
       </div>
       <footer>
         <div>
