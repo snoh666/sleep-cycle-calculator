@@ -42,7 +42,8 @@ function Values({ setHours, setMinutes, setAm }) {
       </select>
       <select id="minutes" onChange={updateMinutes}>
         <option value="null">(minutes)</option>
-        <option value="5">5</option>
+        <option value="0">00</option>
+        <option value="5">05</option>
         <option value="10">10</option>
         <option value="15">15</option>
         <option value="20">20</option>
