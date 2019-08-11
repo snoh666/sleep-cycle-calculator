@@ -12,9 +12,12 @@ function App() {
   return (
     <div className="App">
       <h1>Calculate sleep cycles</h1>
-      <div>
+      <div className="components-box">
         <Hours />
         <Minutes />
+        <div className="result">
+          { `Hours: ${hoursToWakeUp}, Minutes: ${minutesToWakeUp}` }
+        </div>
       </div>
       <footer>
         <div>
