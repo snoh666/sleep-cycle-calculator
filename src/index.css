@@ -31,3 +31,27 @@ footer{
   align-items: center;
   justify-content: space-around;
 }
+select{
+  font-family: 'Montserrat',
+  sans-serif;
+  font-size: .8em;
+  background: none;
+  border: 2px solid #fff;
+  border-radius: 8px;
+  padding: 2px 5px;
+}
+select option{
+  text-align: center;
+}
+h4{
+  font-weight: normal;
+  font-size: 1em;
+  margin: 5px 0;
+}
+hr{
+  width: 500px;
+  height: 2px;
+  margin: 20px 0;
+  background: black;
+  border: none;
+}
