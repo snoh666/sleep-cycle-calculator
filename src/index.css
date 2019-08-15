@@ -18,6 +18,9 @@ body{
   align-items: center;
   justify-content: space-between;
 }
+h2{
+  margin: 10px 5px;
+}
 footer{
   width: 100%;
   padding: 10px 0;
@@ -49,7 +52,7 @@ h4{
   margin: 5px 0;
 }
 hr{
-  width: 500px;
+  max-width: 500px;
   height: 2px;
   margin: 20px 0;
   background: black;
