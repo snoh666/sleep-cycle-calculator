@@ -3,8 +3,8 @@ import Values from './components/Values';
 import Result from './components/Result';
 
 function App() {
-  let [hoursToWakeUp, setHoursToWakeUp] = useState(1);
-  let [minutesToWakeUp, setMinutesToWakeUp] = useState(1);
+  let [hoursToWakeUp, setHoursToWakeUp] = useState(0);
+  let [minutesToWakeUp, setMinutesToWakeUp] = useState(0);
   let [isAm, setIsAm] = useState(true);
 
   return (
