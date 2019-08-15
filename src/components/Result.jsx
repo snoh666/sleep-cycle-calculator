@@ -22,21 +22,24 @@ function Result({ hours, minutes, Am }) {
       720 = 12 hours in minutes
 
       Now we have to create loop that is going to calculate every hour
+
+      dayMinutes - ( i === 1 ? 90 : 90 * i )
+
+      (dayMinutes - ( i === 1 ? 90 : 90 * i )> 0 ? dayMinutes - ( i === 1 ? 90 : 90 * i ) : dayMinutes - ( i === 1 ? 90 : 90 * i ) + 1440)
     */
 
     let timeStamps = [];
 
     for(let i = 7; i >= 1; i--) {
+      const timeForTimestamp = Number((dayMinutes - (i === 1 ? 90 : 90 * i) > 0 ? dayMinutes - (i === 1 ? 90 : 90 * i) : dayMinutes - (i === 1 ? 90 : 90 * i) + 1440));
       timeStamps.push({
         hours: Math.floor(
-          (dayMinutes - (
-            i === 1 ? 90 : 90 * i
-          )) / 60
+          timeForTimestamp
+          / 60
         ),
         minutes: Math.floor(
-          (dayMinutes - (
-            i === 1 ? 90 : 90 * i
-          )) % 60
+          timeForTimestamp
+          % 60
         ),
         id: dayMinutes - (
           i === 1 ? 90 : 90 * i
