@@ -13,13 +13,8 @@ function Result({ hours, minutes, Am }) {
     '#c0392b'
   ];
 
-  const calculateMinutes = ({hrs, min, am}) => {
-    let result = hrs * 60 + min;
-    return am ? result : result + 12 * 60;
-  }
-
-  const showHoursToSleep = (dayMinutes) => {
-
+  const showHoursToSleep = () => {
+    const dayMinutes = Am ? hours * 60 + minutes : hours * 60 + minutes + 12 * 60;
     /*
       Every sleep cycle is 90 minutes long
       User gives time we coonvert it to minutes elapsed from mid night thanks to am and pm in eng
@@ -54,7 +49,7 @@ function Result({ hours, minutes, Am }) {
 
   return (
     <div className="Result">
-      {showHoursToSleep(calculateMinutes({ hrs: hours, min: minutes, am: Am })).map((el, index) => {
+      {showHoursToSleep().map((el, index) => {
         return (
           <TimeStamp hours={el.hours} minutes={el.minutes} color={colors[index]} key={el.id} />
         );
