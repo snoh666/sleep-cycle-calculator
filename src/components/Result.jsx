@@ -9,7 +9,6 @@ function Result({ hours, minutes, Am }) {
     '#3498db',
     '#2980b9',
     '#9b59b6',
-    '#8e44ad',
     '#c0392b'
   ];
 
@@ -18,7 +17,7 @@ function Result({ hours, minutes, Am }) {
 
     let timeStamps = [];
 
-    for(let i = 7; i >= 1; i--) {
+    for(let i = 6; i >= 1; i--) {
       const timeForTimestamp = Number((dayMinutes - (i === 1 ? 90 : 90 * i) > 0 ?
         dayMinutes - (i === 1 ? 90 : 90 * i) :
         dayMinutes - (i === 1 ? 90 : 90 * i) + 1440));
