@@ -9,7 +9,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Calculate sleep cycles</h1>
+      <h2>Calculate sleep cycles</h2>
       <div className="components-box">
         <h4>You need to wake up at:</h4>
         <Values setHours={setHoursToWakeUp} setMinutes={setMinutesToWakeUp} setAm={setIsAm} />
