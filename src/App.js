@@ -16,6 +16,7 @@ function App() {
         <hr/>
         <Result hours={hoursToWakeUp} minutes={minutesToWakeUp} Am={isAm} />
       </div>
+      <div className="info">A good night's sleep consists of 5-6 complete sleep cycles</div>
       <footer>
         <div>
           <span>Created by snoh666</span>
