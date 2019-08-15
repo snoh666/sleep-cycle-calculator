@@ -15,23 +15,14 @@ function Result({ hours, minutes, Am }) {
 
   const showHoursToSleep = () => {
     const dayMinutes = Am ? hours * 60 + minutes : hours * 60 + minutes + 12 * 60;
-    /*
-      Every sleep cycle is 90 minutes long
-      User gives time we coonvert it to minutes elapsed from mid night thanks to am and pm in eng
-      We have to convert it to timestamps
-      720 = 12 hours in minutes
-
-      Now we have to create loop that is going to calculate every hour
-
-      dayMinutes - ( i === 1 ? 90 : 90 * i )
-
-      (dayMinutes - ( i === 1 ? 90 : 90 * i )> 0 ? dayMinutes - ( i === 1 ? 90 : 90 * i ) : dayMinutes - ( i === 1 ? 90 : 90 * i ) + 1440)
-    */
 
     let timeStamps = [];
 
     for(let i = 7; i >= 1; i--) {
-      const timeForTimestamp = Number((dayMinutes - (i === 1 ? 90 : 90 * i) > 0 ? dayMinutes - (i === 1 ? 90 : 90 * i) : dayMinutes - (i === 1 ? 90 : 90 * i) + 1440));
+      const timeForTimestamp = Number((dayMinutes - (i === 1 ? 90 : 90 * i) > 0 ?
+        dayMinutes - (i === 1 ? 90 : 90 * i) :
+        dayMinutes - (i === 1 ? 90 : 90 * i) + 1440));
+
       timeStamps.push({
         hours: Math.floor(
           timeForTimestamp
