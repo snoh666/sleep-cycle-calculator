@@ -14,7 +14,7 @@ Faster and rebuilded in react version of original site. I was using it and had s
 
   1. gh-pages for deployment
   1. useState
-  1. props and children
+  1. props with destructuring object
   1. Logical thinking to convert time
 
 ## Original site: [Sleepyti.me](https://sleepyti.me/)
