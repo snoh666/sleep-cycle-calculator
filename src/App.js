@@ -19,7 +19,7 @@ function App() {
       <div className="info">A good night's sleep consists of 5-6 complete sleep cycles</div>
       <footer>
         <div>
-          <span>Created by snoh666</span>
+          <span>Created by <a href="https://github.com/snoh666" target="_blank" rel="noopener noreferrer">snoh666</a></span>
         </div>
       </footer>
     </div>
