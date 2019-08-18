@@ -1,5 +1,6 @@
 {
   "name": "sleepyti-react",
+  "homepage": "https://snoh666.github.io/sleep-cycle-calculator/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
