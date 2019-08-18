@@ -70,3 +70,11 @@ hr{
 .info{
   color: #3498db;
 }
+a{
+  color: #000;
+  text-transform: none;
+  transition: color .6s ease-out;
+}
+a:hover{
+  color: #ecf0f1;
+}
