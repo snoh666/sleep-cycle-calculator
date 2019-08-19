@@ -22,11 +22,10 @@ function Result({ hours, minutes, Am }) {
         dayMinutes - (i === 1 ? 90 : 90 * i) :
         dayMinutes - (i === 1 ? 90 : 90 * i) + 1440));
 
+      const hours = Math.floor( timeForTimestamp / 60 );
+
       timeStamps.push({
-        hours: Math.floor(
-          timeForTimestamp
-          / 60
-        ),
+        hours: (hours === 24 ? '00' : hours),
         minutes: Math.floor(
           timeForTimestamp
           % 60
