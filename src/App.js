@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Values from './components/Values';
 import Result from './components/Result';
+import FallASleep from './components/Fall';
 
 function App() {
   let [hoursToWakeUp, setHoursToWakeUp] = useState(0);
@@ -13,6 +14,8 @@ function App() {
       <div className="components-box">
         <h4>You need to wake up at:</h4>
         <Values setHours={setHoursToWakeUp} setMinutes={setMinutesToWakeUp} setAm={setIsAm} />
+        <hr/>
+        <FallASleep setHours={setHoursToWakeUp} setMinutes={setMinutesToWakeUp} setAm={setIsAm} />
         <hr/>
         <Result hours={hoursToWakeUp} minutes={minutesToWakeUp} Am={isAm} />
       </div>
