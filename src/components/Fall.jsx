@@ -21,8 +21,6 @@ function FallASleep({ setHours, setMinutes, setAm, setForward }) {
       }
     }
 
-    console.log(nowTime);
-
     setHours(nowTime.hours);
     setMinutes(nowTime.minutes);
     setAm(nowTime.isAm);
