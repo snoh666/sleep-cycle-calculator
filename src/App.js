@@ -8,6 +8,15 @@ import AppWrapper from './components/styled/AppWrapper';
 import InfoText from './components/styled/InfoText';
 import StyledFooter from './components/styled/StyledFooter';
 
+/*
+  TODO:
+  - all this states replace with one useReducer or Redux
+
+  - add info box in Result about it's direction ( forward || backwards )
+  - style button component in Fall.jsx
+
+*/
+
 function App() {
   let [hoursToWakeUp, setHoursToWakeUp] = useState(0);
   let [minutesToWakeUp, setMinutesToWakeUp] = useState(0);
