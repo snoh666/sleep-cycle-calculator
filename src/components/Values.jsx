@@ -1,4 +1,6 @@
 import React from 'react'
+import FormWrapper from './styled/FormWrapper';
+import StyledSelect from './styled/StyledSelect';
 
 function Values({ setHours, setMinutes, setAm }) {
 
@@ -24,8 +26,8 @@ function Values({ setHours, setMinutes, setAm }) {
   }
 
   return (
-    <div className="Values">
-      <select id="hours" onChange={updateHours}>
+    <FormWrapper>
+      <StyledSelect id="hours" onChange={updateHours}>
         <option value="null">(hour)</option>
         <option value="1">1</option>
         <option value="2">2</option>
@@ -39,8 +41,8 @@ function Values({ setHours, setMinutes, setAm }) {
         <option value="10">10</option>
         <option value="11">11</option>
         <option value="12">12</option>
-      </select>
-      <select id="minutes" onChange={updateMinutes}>
+      </StyledSelect>
+      <StyledSelect id="minutes" onChange={updateMinutes}>
         <option value="null">(minutes)</option>
         <option value="0">00</option>
         <option value="5">05</option>
@@ -54,12 +56,12 @@ function Values({ setHours, setMinutes, setAm }) {
         <option value="45">45</option>
         <option value="50">50</option>
         <option value="55">55</option>
-      </select>
-      <select id="am-pm" onChange={updateAm}>
+      </StyledSelect>
+      <StyledSelect id="am-pm" onChange={updateAm}>
         <option value="am">AM</option>
         <option value="pm">PM</option>
-      </select>
-    </div>
+      </StyledSelect>
+    </FormWrapper>
   );
 }
 
