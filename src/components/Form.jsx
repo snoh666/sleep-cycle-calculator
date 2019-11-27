@@ -2,19 +2,23 @@ import React from 'react'
 import FormWrapper from './styled/FormWrapper';
 import StyledSelect from './styled/StyledSelect';
 
-function Form({ setHours, setMinutes, setAm }) {
+function Form({ setHours, setMinutes, setAm, setForward }) {
 
   const updateHours = e => {
     const { target: { value } } = e;
     if(value !== 'null') {
       setHours(Number(value));
     }
+
+    setForward(false);
   }
   const updateMinutes = e => {
     const { target: { value } } = e;
     if(value !== 'null') {
       setMinutes(Number(value));
     }
+
+    setForward(false);
   }
   const updateAm = e => {
     const { target: { value } } = e;
@@ -23,6 +27,8 @@ function Form({ setHours, setMinutes, setAm }) {
     } else if(value === 'pm') {
       setAm(false);
     }
+
+    setForward(false);
   }
 
   return (
