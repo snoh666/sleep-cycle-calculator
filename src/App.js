@@ -14,6 +14,7 @@ import StyledFooter from './components/styled/StyledFooter';
 
   - add info box in Result about it's direction ( forward || backwards )
   - style button component in Fall.jsx
+  - check the bug with flex reverse on results
 
 */
 
