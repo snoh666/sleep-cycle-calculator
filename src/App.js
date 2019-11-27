@@ -19,7 +19,7 @@ function App() {
       <h2>Calculate sleep cycles</h2>
       <div>
         <h4>You need to wake up at:</h4>
-        <Form setHours={setHoursToWakeUp} setMinutes={setMinutesToWakeUp} setAm={setIsAm} />
+        <Form setHours={setHoursToWakeUp} setMinutes={setMinutesToWakeUp} setAm={setIsAm} setForward={setIsForward} />
         <hr/>
         <FallASleep setHours={setHoursToWakeUp} setMinutes={setMinutesToWakeUp} setAm={setIsAm} setForward={setIsForward} />
         <hr/>
