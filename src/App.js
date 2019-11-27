@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Values from './components/Values';
+import Form from './components/Form';
 import Result from './components/Result';
 import FallASleep from './components/Fall';
 
@@ -12,17 +12,18 @@ function App() {
   let [hoursToWakeUp, setHoursToWakeUp] = useState(0);
   let [minutesToWakeUp, setMinutesToWakeUp] = useState(0);
   let [isAm, setIsAm] = useState(true);
+  let [isForward, setIsForward] = useState(false);
 
   return (
     <AppWrapper>
       <h2>Calculate sleep cycles</h2>
       <div>
         <h4>You need to wake up at:</h4>
-        <Values setHours={setHoursToWakeUp} setMinutes={setMinutesToWakeUp} setAm={setIsAm} />
+        <Form setHours={setHoursToWakeUp} setMinutes={setMinutesToWakeUp} setAm={setIsAm} />
         <hr/>
-        <FallASleep setHours={setHoursToWakeUp} setMinutes={setMinutesToWakeUp} setAm={setIsAm} />
+        <FallASleep setHours={setHoursToWakeUp} setMinutes={setMinutesToWakeUp} setAm={setIsAm} setForward={setIsForward} />
         <hr/>
-        <Result hours={hoursToWakeUp} minutes={minutesToWakeUp} Am={isAm} />
+        <Result hours={hoursToWakeUp} minutes={minutesToWakeUp} Am={isAm} isForward={isForward} />
       </div>
       <InfoText>
         A good night's sleep consists of 5-6 complete sleep cycles
