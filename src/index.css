@@ -25,11 +25,6 @@ hr{
   background: black;
   border: none;
 }
-.Result{
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-}
 .timestamp{
   margin: 2.5px 5px;
 }
