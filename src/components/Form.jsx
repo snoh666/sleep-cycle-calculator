@@ -2,7 +2,7 @@ import React from 'react'
 import FormWrapper from './styled/FormWrapper';
 import StyledSelect from './styled/StyledSelect';
 
-function Values({ setHours, setMinutes, setAm }) {
+function Form({ setHours, setMinutes, setAm }) {
 
   const updateHours = e => {
     const { target: { value } } = e;
@@ -65,4 +65,4 @@ function Values({ setHours, setMinutes, setAm }) {
   );
 }
 
-export default Values;
+export default Form;
