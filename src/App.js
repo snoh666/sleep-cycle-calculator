@@ -38,11 +38,9 @@ function App() {
         A good night's sleep consists of 5-6 complete sleep cycles
       </InfoText>
       <StyledFooter>
-        <div>
           <span>
             Created by <a href="https://github.com/snoh666" target="_blank" rel="noopener noreferrer">snoh666</a>
           </span>
-        </div>
       </StyledFooter>
     </AppWrapper>
   );
