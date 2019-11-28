@@ -1,6 +1,8 @@
 import React from 'react'
 import FormWrapper from './styled/FormWrapper';
 import StyledSelect from './styled/StyledSelect';
+import { connect } from "react-redux";
+import { setHours, setMinutes, setAm, setForward } from '../redux/actions';
 
 function Form({ setHours, setMinutes, setAm, setForward }) {
 
@@ -71,4 +73,7 @@ function Form({ setHours, setMinutes, setAm, setForward }) {
   );
 }
 
-export default Form;
+export default connect(
+  null,
+  { setHours, setMinutes, setAm, setForward }
+)(Form);

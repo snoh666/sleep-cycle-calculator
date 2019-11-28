@@ -1,6 +1,9 @@
 import React from 'react'
+import { connect } from "react-redux";
+import { setHrsMins, setForward } from '../redux/actions';
 
-function FallASleep({ setHours, setMinutes, setAm, setForward }) {
+
+function FallASleep({ setForward, setHrsMins }) {
 
   const updateTimeHours = () => {
     const date = new Date();
@@ -21,10 +24,35 @@ function FallASleep({ setHours, setMinutes, setAm, setForward }) {
       }
     }
 
-    setHours(nowTime.hours);
-    setMinutes(nowTime.minutes);
-    setAm(nowTime.isAm);
+    // setHours(nowTime.hours);
+    // setMinutes(nowTime.minutes);
+    // setAm(nowTime.isAm);
+    // setForward(true);
+
+    // REDUX TEXT CODE ----------------------------------
+
+    // dispatch({
+    //   type: 'SET_HRS_MINS',
+    //   item: {
+    //     hoursToWakeUp: nowTime.hours,
+    //     minutesToWakeUp: nowTime.minutes,
+    //     isAm: nowTime.isAm
+    //   }
+    // });
+
+    setHrsMins({
+      hrs: nowTime.hours,
+      min: nowTime.minutes,
+      isAm: nowTime.isAm
+    });
+
+    // dispatch({
+    //   type: 'SET_FORWARD',
+    //   item: true
+    // });
+
     setForward(true);
+
   }
 
   return (
@@ -34,4 +62,7 @@ function FallASleep({ setHours, setMinutes, setAm, setForward }) {
   );
 }
 
-export default FallASleep;
+export default connect(
+  null,
+  { setHrsMins, setForward }
+)(FallASleep);

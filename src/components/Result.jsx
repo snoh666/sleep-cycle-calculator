@@ -4,7 +4,10 @@ import { getHoursToSleepBack, getHoursToWakeUpAt } from '../functions/getHours';
 
 import ResultWrapper from './styled/ResultWrapper';
 
-function Result({ hours, minutes, Am, isForward }) {
+import { connect } from "react-redux";
+import { getValues } from '../redux/actions';
+
+function Result({ hours, minutes, Am, isForw }) {
 
   const colors = [
     '#2ecc71',
@@ -16,8 +19,8 @@ function Result({ hours, minutes, Am, isForward }) {
   ];
 
   return (
-    <ResultWrapper reverse={isForward}>
-      {(isForward ? getHoursToWakeUpAt(hours, minutes, Am) : getHoursToSleepBack(hours, minutes, Am)).map((el, index) => {
+    <ResultWrapper reverse={isForw}>
+      {(isForw ? getHoursToWakeUpAt(hours, minutes, Am) : getHoursToSleepBack(hours, minutes, Am)).map((el, index) => {
         return (
           <TimeStamp hours={el.hours} minutes={el.minutes} color={colors[index]} key={el.id} />
         );
@@ -26,4 +29,7 @@ function Result({ hours, minutes, Am, isForward }) {
   );
 }
 
-export default Result;
+export default connect(
+  getValues,
+  null
+)(Result);
