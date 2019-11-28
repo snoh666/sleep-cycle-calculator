@@ -1,9 +1,3 @@
-/*
-  let [hoursToWakeUp, setHoursToWakeUp] = useState(0);
-  let [minutesToWakeUp, setMinutesToWakeUp] = useState(0);
-  let [isAm, setIsAm] = useState(true);
-  let [isForward, setIsForward] = useState(false);
-*/
 
 const initialState = {
  hoursToWakeUp: 0,
