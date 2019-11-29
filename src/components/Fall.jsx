@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from "react-redux";
 import { setHrsMins, setForward } from '../redux/actions';
+import StyledButton from './styled/StyledButton';
 
 
 function FallASleep({ setForward, setHrsMins }) {
@@ -35,7 +36,7 @@ function FallASleep({ setForward, setHrsMins }) {
 
   return (
     <div className="Fall">
-      <button onClick={updateTimeHours} >Zzz..</button>
+      <StyledButton onClick={updateTimeHours} >Zzz..</StyledButton>
     </div>
   );
 }
