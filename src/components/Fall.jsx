@@ -23,33 +23,11 @@ function FallASleep({ setForward, setHrsMins }) {
         nowTime.hours = Math.floor(nowTime.hours % 12);
       }
     }
-
-    // setHours(nowTime.hours);
-    // setMinutes(nowTime.minutes);
-    // setAm(nowTime.isAm);
-    // setForward(true);
-
-    // REDUX TEXT CODE ----------------------------------
-
-    // dispatch({
-    //   type: 'SET_HRS_MINS',
-    //   item: {
-    //     hoursToWakeUp: nowTime.hours,
-    //     minutesToWakeUp: nowTime.minutes,
-    //     isAm: nowTime.isAm
-    //   }
-    // });
-
     setHrsMins({
       hrs: nowTime.hours,
       min: nowTime.minutes,
       isAm: nowTime.isAm
     });
-
-    // dispatch({
-    //   type: 'SET_FORWARD',
-    //   item: true
-    // });
 
     setForward(true);
 
