@@ -18,7 +18,7 @@ function App() {
     <AppWrapper>
       <h2>Calculate sleep cycles</h2>
       <div>
-        <h4>You need to wake up at:</h4>
+        <h4>I want to get up at:</h4>
         <Form />
         <hr/>
         <FallASleep />
