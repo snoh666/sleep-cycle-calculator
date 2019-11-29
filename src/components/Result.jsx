@@ -20,6 +20,11 @@ function Result({ hours, minutes, Am, isForw }) {
 
   return (
     <ResultWrapper reverse={isForw}>
+      <div style={{width: '100%'}}>
+        {
+          (isForw ? 'You should wake up at:' : 'You should fall a sleep at:')
+        }
+      </div>
       {(isForw ? getHoursToWakeUpAt(hours, minutes, Am) : getHoursToSleepBack(hours, minutes, Am)).map((el, index) => {
         return (
           <TimeStamp hours={el.hours} minutes={el.minutes} color={colors[index]} key={el.id} />
