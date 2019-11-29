@@ -10,7 +10,6 @@ import StyledFooter from './components/styled/StyledFooter';
 
 /*
   TODO:
-  - style button component in Fall.jsx
   - check the bug with flex reverse on results
   - Fix bug with not PM working
 */
