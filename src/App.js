@@ -10,7 +10,6 @@ import StyledFooter from './components/styled/StyledFooter';
 
 /*
   TODO:
-  - Fix bug with not PM working
 */
 
 function App() {
