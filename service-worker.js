@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/sleep-cycle-calculator/precache-manifest.88232f058b4118bb3a7e2cd47a659e8b.js"
+  "/sleep-cycle-calculator/precache-manifest.cb10f1b72b9cb17ec421ced62040360f.js"
 );
 
 self.addEventListener('message', (event) => {
