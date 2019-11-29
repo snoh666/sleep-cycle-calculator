@@ -7,7 +7,7 @@ import ResultWrapper from './styled/ResultWrapper';
 import { connect } from "react-redux";
 import { getValues } from '../redux/actions';
 
-function Result({ hours, minutes, Am, isForw }) {
+function Result({ hours, minutes, isAm, isForw }) {
 
   const colors = [
     '#2ecc71',
@@ -25,7 +25,7 @@ function Result({ hours, minutes, Am, isForw }) {
           (isForw ? 'You should wake up at:' : 'You should fall a sleep at:')
         }
       </div>
-      {(isForw ? getHoursToWakeUpAt(hours, minutes, Am) : getHoursToSleepBack(hours, minutes, Am)).map((el, index) => {
+      {(isForw ? getHoursToWakeUpAt(hours, minutes, isAm) : getHoursToSleepBack(hours, minutes, isAm)).map((el, index) => {
         return (
           <TimeStamp hours={el.hours} minutes={el.minutes} color={colors[index]} key={el.id} />
         );
