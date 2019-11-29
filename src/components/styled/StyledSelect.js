@@ -8,7 +8,7 @@ const StyledSelect = styled.select`
   border: 1px solid #fff;
   border-radius: 8px;
   padding: 2px 5px;
-  
+
   option{
     text-align: center;
   }
