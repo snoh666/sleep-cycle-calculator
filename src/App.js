@@ -3,7 +3,7 @@ import React from 'react';
 import Header from './components/Header';
 import Form from './components/Form';
 import Result from './components/Result';
-import FallASleep from './components/Fall';
+// import FallASleep from './components/Fall';
 
 import styled from 'styled-components';
 
