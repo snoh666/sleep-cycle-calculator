@@ -1,100 +1,192 @@
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
-import { setHours, setMinutes, setAm, setForward } from '../redux/actions';
+import { setHrsMins, setAm } from '../redux/actions';
 
-function Form({ setHours, setMinutes, setAm, setForward }) {
-  const updateHours = (e) => {
-    const {
-      target: { value },
-    } = e;
-    if (value !== 'null') {
-      setHours(Number(value));
+function Form({ setHrsMins, setAm }) {
+  const [hours, setHours] = useState(0);
+  const [minutes, setMinutes] = useState(0);
+  const [timeoutId, setTimeoutId] = useState('');
+  const formElement = useRef();
+
+  const updateHours = e => {
+    const { value } = e.target;
+
+    if (value > 24) {
+      setHours(24);
+    } else if (value < 0 || value.length === 0) {
+      setHours(0);
+    } else {
+      e.target.value = parseInt(e.target.value);
+      setHours(parseInt(e.target.value));
     }
-
-    setForward(false);
   };
-  const updateMinutes = (e) => {
-    const {
-      target: { value },
-    } = e;
-    if (value !== 'null') {
-      setMinutes(Number(value));
-    }
 
-    setForward(false);
+  const updateMinutes = e => {
+    const { value } = e.target;
+
+    if (value > 60) {
+      setMinutes(60);
+    } else if (value < 0 || value.length === 0) {
+      setMinutes(0);
+    } else {
+      e.target.value = parseInt(e.target.value);
+      setMinutes(parseInt(e.target.value));
+    }
   };
-  const updateAm = (e) => {
-    const {
-      target: { value },
-    } = e;
-    if (value === 'am') {
-      setAm(true);
-    } else if (value === 'pm') {
-      setAm(false);
+
+  const onFormChange = e => {
+    if (timeoutId) {
+      clearInterval(timeoutId);
+      setTimeoutId(true);
     }
 
-    setForward(false);
+    const staticTimeoutId = setTimeout(_ => {
+      formElement.current.dispatchEvent(new Event('submit'));
+    }, 1000);
+
+    setTimeoutId(staticTimeoutId);
+  };
+
+  const handleSubmit = e => {
+    e.preventDefault();
+
+    const flooredHours = Math.floor(hours % 12);
+
+    setHrsMins({
+      hrs: flooredHours,
+      min: minutes,
+      isAm: hours <= 12,
+    });
   };
 
   return (
-    <FormWrapper>
-      <StyledSelect id='hours' onChange={updateHours}>
-        <option value='null'>(hour)</option>
-        <option value='1'>1</option>
-        <option value='2'>2</option>
-        <option value='3'>3</option>
-        <option value='4'>4</option>
-        <option value='5'>5</option>
-        <option value='6'>6</option>
-        <option value='7'>7</option>
-        <option value='8'>8</option>
-        <option value='9'>9</option>
-        <option value='10'>10</option>
-        <option value='11'>11</option>
-        <option value='12'>12</option>
-      </StyledSelect>
-      <StyledSelect id='minutes' onChange={updateMinutes}>
-        <option value='null'>(minutes)</option>
-        <option value='0'>00</option>
-        <option value='5'>05</option>
-        <option value='10'>10</option>
-        <option value='15'>15</option>
-        <option value='20'>20</option>
-        <option value='25'>25</option>
-        <option value='30'>30</option>
-        <option value='35'>35</option>
-        <option value='40'>40</option>
-        <option value='45'>45</option>
-        <option value='50'>50</option>
-        <option value='55'>55</option>
-      </StyledSelect>
-      <StyledSelect id='am-pm' onChange={updateAm}>
-        <option value='am'>AM</option>
-        <option value='pm'>PM</option>
-      </StyledSelect>
-    </FormWrapper>
+    <StyledSection>
+      <ClockWrapper>
+        <ClockContent>
+          <TimeOutput>
+            <form
+              ref={formElement}
+              onSubmit={handleSubmit}
+              onChange={onFormChange}
+            >
+              <StyledInput
+                type='number'
+                max='24'
+                value={hours}
+                onChange={updateHours}
+                end
+              />
+              <span>:</span>
+              <StyledInput
+                type='number'
+                max='60'
+                value={minutes}
+                onChange={updateMinutes}
+              />
+            </form>
+          </TimeOutput>
+          <StyledSubInfo>Edit above</StyledSubInfo>
+        </ClockContent>
+      </ClockWrapper>
+    </StyledSection>
   );
 }
 
-export default connect(null, { setHours, setMinutes, setAm, setForward })(Form);
+export default connect(null, { setHrsMins, setAm })(Form);
 
-const FormWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-around;
+const StyledSection = styled.section`
+  width: 100%;
+  max-width: 300px;
+
+  margin: 20px auto;
 `;
 
-const StyledSelect = styled.select`
-  font-family: 'Montserrat', sans-serif;
-  font-size: 0.8em;
-  background: none;
-  border: 1px solid #fff;
-  border-radius: 8px;
-  padding: 2px 5px;
+const ClockWrapper = styled.div`
+  width: 100%;
+  padding-top: 100%;
 
-  option {
-    text-align: center;
+  position: relative;
+
+  &::before {
+    content: '';
+    display: block;
+    position: absolute;
+
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    border-radius: 100%;
+
+    background: linear-gradient(to top right, #6a89cc, #1e3799);
+    z-index: 0;
   }
+
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+
+    width: 100%;
+    height: 30%;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+
+    background: radial-gradient(
+      circle at bottom,
+      ${props => props.theme.darkBlue} 40%,
+      transparent
+    );
+  }
+`;
+
+const ClockContent = styled.div`
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  right: 2px;
+  bottom: 2px;
+
+  border: 5px solid transparent;
+  border-radius: 100%;
+
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+
+  background-color: ${props => props.theme.darkBlue};
+`;
+
+const TimeOutput = styled.div`
+  font-size: 3rem;
+  letter-spacing: 2.5px;
+  font-weight: 100;
+`;
+
+const StyledInput = styled.input`
+  width: auto;
+  max-width: 75px;
+
+  background: transparent;
+  border: none;
+
+  text-align: ${props => (props.end ? 'end' : 'start')};
+  padding: 0 0.25rem;
+
+  font-family: 'Roboto', sans-serif;
+  color: ${props => props.theme.grey};
+  font-size: 3rem;
+  letter-spacing: 2.5px;
+  font-weight: 100;
+`;
+
+const StyledSubInfo = styled.p`
+  margin-top: 5px;
+  font-size: 0.9rem;
+  color: ${props => props.theme.greyDark};
+  font-weight: 200;
 `;
