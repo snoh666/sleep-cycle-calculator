@@ -44,4 +44,6 @@ const AppWrapper = styled.div`
   align-items: center;
   justify-content: space-between;
   text-align: center;
+
+  background: ${(props) => props.theme.darkBlue};
 `;
