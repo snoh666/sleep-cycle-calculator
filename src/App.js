@@ -7,10 +7,6 @@ import FallASleep from './components/Fall';
 
 import styled from 'styled-components';
 
-/*
-  TODO:
-*/
-
 function App() {
   return (
     <AppWrapper>
