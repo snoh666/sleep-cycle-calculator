@@ -30,7 +30,7 @@ const HeaderWrapper = styled.div`
 
 const StyledHeader = styled.h1`
   font-size: 1rem;
-  color: ${(props) => props.theme.grey};
+  color: ${props => props.theme.grey};
   text-transform: uppercase;
   font-weight: normal;
   letter-spacing: 1px;
@@ -38,7 +38,7 @@ const StyledHeader = styled.h1`
 
 const StyledSubHeader = styled.h2`
   font-size: 0.9rem;
-  color: ${(props) => props.theme.greyDark};
+  color: ${props => props.theme.greyDark};
   margin: 0;
   font-weight: 200;
 `;
