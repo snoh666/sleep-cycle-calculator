@@ -5,7 +5,7 @@ const Header = () => {
   return (
     <HeaderWrapper>
       <StyledHeader>Sleep calculator</StyledHeader>
-      <StyledSubHeader>Calculate!</StyledSubHeader>
+      <StyledSubHeader>Calculate your sleep cycles!</StyledSubHeader>
     </HeaderWrapper>
   );
 };
@@ -33,10 +33,12 @@ const StyledHeader = styled.h1`
   color: ${(props) => props.theme.grey};
   text-transform: uppercase;
   font-weight: normal;
+  letter-spacing: 1px;
 `;
 
 const StyledSubHeader = styled.h2`
   font-size: 0.9rem;
   color: ${(props) => props.theme.greyDark};
   margin: 0;
+  font-weight: 200;
 `;
