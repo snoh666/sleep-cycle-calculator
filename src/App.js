@@ -6,8 +6,6 @@ import Result from './components/Result';
 import FallASleep from './components/Fall';
 
 import styled from 'styled-components';
-// Styled Components
-import InfoText from './components/styled/InfoText';
 
 /*
   TODO:
@@ -20,13 +18,7 @@ function App() {
         <Header />
       </header>
       <Form />
-      <div>
-        <FallASleep />
-        <Result />
-      </div>
-      <InfoText>
-        A good night's sleep consists of 5-6 complete sleep cycles
-      </InfoText>
+      <Result />
     </AppWrapper>
   );
 }
