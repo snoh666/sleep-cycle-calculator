@@ -19,12 +19,9 @@ function App() {
       <header>
         <Header />
       </header>
+      <Form />
       <div>
-        <h4>I want to get up at:</h4>
-        <Form />
-        <hr />
         <FallASleep />
-        <hr />
         <Result />
       </div>
       <InfoText>
@@ -39,11 +36,12 @@ export default App;
 const AppWrapper = styled.div`
   width: 100vw;
   min-height: 100vh;
+  padding-top: 75px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   text-align: center;
 
-  background: ${(props) => props.theme.darkBlue};
+  background: ${props => props.theme.darkBlue};
 `;
