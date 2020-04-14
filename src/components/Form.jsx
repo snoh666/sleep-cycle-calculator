@@ -1,9 +1,9 @@
 import React, { useState, useRef } from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
-import { setHrsMins, setAm } from '../redux/actions';
+import { setHrsMins } from '../redux/actions';
 
-function Form({ setHrsMins, setAm }) {
+function Form({ setHrsMins }) {
   const [hours, setHours] = useState(0);
   const [minutes, setMinutes] = useState(0);
   const [timeoutId, setTimeoutId] = useState('');
@@ -93,7 +93,7 @@ function Form({ setHrsMins, setAm }) {
   );
 }
 
-export default connect(null, { setHrsMins, setAm })(Form);
+export default connect(null, { setHrsMins })(Form);
 
 const StyledSection = styled.section`
   width: 100%;
