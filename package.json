@@ -36,6 +36,7 @@
     ]
   },
   "devDependencies": {
-    "gsap": "^3.2.6"
+    "gsap": "^3.2.6",
+    "prettier": "^2.0.4"
   }
 }
