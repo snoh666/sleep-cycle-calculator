@@ -1,13 +1,13 @@
 import React from 'react';
+
+import Header from './components/Header';
 import Form from './components/Form';
 import Result from './components/Result';
 import FallASleep from './components/Fall';
 
+import styled from 'styled-components';
 // Styled Components
-import AppWrapper from './components/styled/AppWrapper';
 import InfoText from './components/styled/InfoText';
-import StyledFooter from './components/styled/StyledFooter';
-import Header from './components/Header';
 
 /*
   TODO:
@@ -30,20 +30,18 @@ function App() {
       <InfoText>
         A good night's sleep consists of 5-6 complete sleep cycles
       </InfoText>
-      <StyledFooter>
-        <span>
-          Created by{' '}
-          <a
-            href='https://github.com/snoh666'
-            target='_blank'
-            rel='noopener noreferrer'
-          >
-            snoh666
-          </a>
-        </span>
-      </StyledFooter>
     </AppWrapper>
   );
 }
 
 export default App;
+
+const AppWrapper = styled.div`
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+`;
