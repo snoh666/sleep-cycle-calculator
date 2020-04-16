@@ -1,40 +1,24 @@
 import React from 'react';
-import TimeStamp from './Timestamp';
-import { getHoursToSleepBack, getHoursToWakeUpAt } from '../functions/getHours';
+import { getHoursToSleepBackChart } from '../functions/getHours';
 
 import styled from 'styled-components';
 
 import { connect } from 'react-redux';
 import { getValues } from '../redux/actions';
+import Chart from './Chart';
 
 function Result({ hours, minutes, isAm, isForw }) {
-  const colors = [
-    '#00c853',
-    '#00bfa5',
-    '#448aff',
-    '#7c4dff',
-    '#ff4081',
-    '#ff5252',
-  ];
+  const data = [...getHoursToSleepBackChart(hours, minutes, isAm)].map(el => ({
+    name: `${el.hours}:${el.minutes}`,
+    uv: el.value,
+  }));
+
+  console.log(data);
 
   return (
-    <ResultWrapper reverse={isForw}>
-      <InfoWrapper>
-        {isForw ? 'You should wake up at:' : 'You should fall a sleep at:'}
-      </InfoWrapper>
-      {(isForw
-        ? getHoursToWakeUpAt(hours, minutes, isAm)
-        : getHoursToSleepBack(hours, minutes, isAm)
-      ).map((el, index) => {
-        return (
-          <TimeStamp
-            hours={el.hours}
-            minutes={el.minutes}
-            color={colors[index]}
-            key={el.id}
-          />
-        );
-      })}
+    <ResultWrapper>
+      <InfoWrapper>You should fall asleep at one of the hills</InfoWrapper>
+      <Chart data={data} />
     </ResultWrapper>
   );
 }
@@ -43,6 +27,7 @@ export default connect(getValues, null)(Result);
 
 const ResultWrapper = styled.div`
   max-width: 500px;
+  margin: 20px 0;
   display: flex;
   justify-content: space-around;
   flex-direction: ${props => (props.reverse ? 'row-reverse' : 'row')};
