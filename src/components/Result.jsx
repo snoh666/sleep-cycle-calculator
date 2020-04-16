@@ -13,8 +13,6 @@ function Result({ hours, minutes, isAm, isForw }) {
     uv: el.value,
   }));
 
-  console.log(data);
-
   return (
     <ResultWrapper>
       <InfoWrapper>You should fall asleep at one of the hills</InfoWrapper>
