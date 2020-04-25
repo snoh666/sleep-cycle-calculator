@@ -75,7 +75,7 @@ function Form({ setHrsMins }) {
                 max='24'
                 value={hours}
                 onChange={updateHours}
-                end
+                align='end'
               />
               <span>:</span>
               <StyledInput
@@ -174,7 +174,7 @@ const StyledInput = styled.input`
   background: transparent;
   border: none;
 
-  text-align: ${props => (props.end ? 'end' : 'start')};
+  text-align: ${props => (props.align === 'end' ? 'end' : 'start')};
   padding: 0 0.25rem;
 
   font-family: 'Roboto', sans-serif;
