@@ -6,7 +6,7 @@ const Chart = ({ data }) => {
   return (
     <ChartWrapper>
       <AreaChart
-        width={window.innerWidth}
+        width={window.innerWidth > 500 ? 500 : window.innerWidth}
         height={150}
         data={data}
         margin={{ left: 30, right: 30, top: 30 }}
