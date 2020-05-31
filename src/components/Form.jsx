@@ -10,28 +10,56 @@ function Form({ setHrsMins }) {
   const formElement = useRef();
 
   const updateHours = e => {
-    const { value } = e.target;
-
-    if (value > 24) {
-      setHours(24);
-    } else if (value < 0 || value.length === 0) {
-      setHours(0);
+    let value;
+    if (e === 'increase') {
+      value = hours + 1;
+    } else if (e === 'decrease') {
+      value = hours - 1;
     } else {
-      e.target.value = parseInt(e.target.value);
-      setHours(parseInt(e.target.value));
+      value = e.target.value;
+    }
+
+    if (value > 23) {
+      if (e === 'increase') {
+        setHours(0);
+      } else {
+        setHours(23);
+      }
+    } else if (value < 0 || value.length === 0) {
+      if (e === 'decrease') {
+        setHours(0);
+      } else {
+        setHours(23);
+      }
+    } else {
+      setHours(parseInt(value));
     }
   };
 
   const updateMinutes = e => {
-    const { value } = e.target;
-
-    if (value > 60) {
-      setMinutes(60);
-    } else if (value < 0 || value.length === 0) {
-      setMinutes(0);
+    let value;
+    if (e === 'increase') {
+      value = minutes + 1;
+    } else if (e === 'decrease') {
+      value = minutes - 1;
     } else {
-      e.target.value = parseInt(e.target.value);
-      setMinutes(parseInt(e.target.value));
+      value = e.target.value;
+    }
+
+    if (value > 59) {
+      if (e === 'increase') {
+        setMinutes(0);
+      } else {
+        setMinutes(59);
+      }
+    } else if (value < 0 || value.length === 0) {
+      if (e === 'decrease') {
+        setMinutes(59);
+      } else {
+        setMinutes(0);
+      }
+    } else {
+      setMinutes(parseInt(value));
     }
   };
 
@@ -70,20 +98,29 @@ function Form({ setHrsMins }) {
               onSubmit={handleSubmit}
               onChange={onFormChange}
             >
-              <StyledInput
-                type='number'
-                max='24'
-                value={hours}
-                onChange={updateHours}
-                align='end'
-              />
+              <InputWrapper>
+                <InputArrow isUp onClick={_ => updateHours('increase')} />
+                <StyledInput
+                  type='number'
+                  max='24'
+                  value={hours}
+                  onChange={updateHours}
+                  align='end'
+                  readonly
+                />
+                <InputArrow onClick={_ => updateHours('decrease')} />
+              </InputWrapper>
               <span>:</span>
-              <StyledInput
-                type='number'
-                max='60'
-                value={minutes}
-                onChange={updateMinutes}
-              />
+              <InputWrapper>
+                <InputArrow isUp onClick={_ => updateMinutes('increase')} />
+                <StyledInput
+                  type='number'
+                  max='60'
+                  value={minutes}
+                  onChange={updateMinutes}
+                />
+                <InputArrow onClick={_ => updateMinutes('decrease')} />
+              </InputWrapper>
             </form>
           </TimeOutput>
           <StyledSubInfo>Edit above</StyledSubInfo>
@@ -167,9 +204,33 @@ const TimeOutput = styled.div`
   font-weight: 100;
 `;
 
-const StyledInput = styled.input`
+const InputWrapper = styled.div`
+  display: inline-block;
   width: auto;
   max-width: 75px;
+
+  position: relative;
+`;
+
+const InputArrow = styled.div`
+  position: absolute;
+  ${props => {
+    if (props.isUp) {
+      return 'top: -15px;';
+    }
+
+    return 'bottom: -15px;';
+  }}
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: 30px;
+  height: 15px;
+  background-color: ${props => props.theme.grey};
+`;
+
+const StyledInput = styled.input`
+  width: 100%;
 
   background: transparent;
   border: none;
@@ -185,7 +246,7 @@ const StyledInput = styled.input`
 `;
 
 const StyledSubInfo = styled.p`
-  margin-top: 5px;
+  margin-top: 20px;
   font-size: 0.9rem;
   color: ${props => props.theme.greyDark};
   font-weight: 200;
