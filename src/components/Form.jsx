@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { setHrsMins } from '../redux/actions';
+import { ReactComponent as DownArrow } from './icons/downArrow.svg';
 
 function Form({ setHrsMins }) {
   const [hours, setHours] = useState(0);
@@ -99,27 +100,35 @@ function Form({ setHrsMins }) {
               onChange={onFormChange}
             >
               <InputWrapper>
-                <InputArrow isUp onClick={_ => updateHours('increase')} />
+                <InputArrow isUp onClick={_ => updateHours('increase')}>
+                  <DownArrow />
+                </InputArrow>
                 <StyledInput
                   type='number'
                   max='24'
                   value={hours}
                   onChange={updateHours}
                   align='end'
-                  readonly
+                  readonly={true}
                 />
-                <InputArrow onClick={_ => updateHours('decrease')} />
+                <InputArrow onClick={_ => updateHours('decrease')}>
+                  <DownArrow />
+                </InputArrow>
               </InputWrapper>
               <span>:</span>
               <InputWrapper>
-                <InputArrow isUp onClick={_ => updateMinutes('increase')} />
+                <InputArrow isUp onClick={_ => updateMinutes('increase')}>
+                  <DownArrow />
+                </InputArrow>
                 <StyledInput
                   type='number'
                   max='60'
                   value={minutes}
                   onChange={updateMinutes}
                 />
-                <InputArrow onClick={_ => updateMinutes('decrease')} />
+                <InputArrow onClick={_ => updateMinutes('decrease')}>
+                  <DownArrow />
+                </InputArrow>
               </InputWrapper>
             </form>
           </TimeOutput>
@@ -222,11 +231,21 @@ const InputArrow = styled.div`
     return 'bottom: -15px;';
   }}
   left: 50%;
-  transform: translateX(-50%);
+  transform-origin: 50% 50%;
+  transform: translateX(-50%) ${props => (props.isUp ? 'rotate(180deg)' : null)};
 
   width: 30px;
   height: 15px;
-  background-color: ${props => props.theme.grey};
+
+  svg {
+    max-width: 30px;
+    max-height: 15px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    fill: #6a89cc;
+    opacity: 0.5;
+  }
 `;
 
 const StyledInput = styled.input`
