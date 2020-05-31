@@ -109,7 +109,6 @@ function Form({ setHrsMins }) {
                   value={hours}
                   onChange={updateHours}
                   align='end'
-                  readonly={true}
                 />
                 <InputArrow onClick={_ => updateHours('decrease')}>
                   <DownArrow />
