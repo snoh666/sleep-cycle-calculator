@@ -1,40 +1,35 @@
 import React from 'react';
+
+import Header from './components/Header';
 import Form from './components/Form';
 import Result from './components/Result';
-import FallASleep from './components/Fall';
+// import FallASleep from './components/Fall';
 
-// Styled Components
-import AppWrapper from './components/styled/AppWrapper';
-import InfoText from './components/styled/InfoText';
-import StyledFooter from './components/styled/StyledFooter';
-
-/*
-  TODO:
-*/
+import styled from 'styled-components';
 
 function App() {
-
   return (
     <AppWrapper>
-      <h2>Calculate sleep cycles</h2>
-      <div>
-        <h4>I want to get up at:</h4>
-        <Form />
-        <hr/>
-        <FallASleep />
-        <hr/>
-        <Result />
-      </div>
-      <InfoText>
-        A good night's sleep consists of 5-6 complete sleep cycles
-      </InfoText>
-      <StyledFooter>
-          <span>
-            Created by <a href="https://github.com/snoh666" target="_blank" rel="noopener noreferrer">snoh666</a>
-          </span>
-      </StyledFooter>
+      <header>
+        <Header />
+      </header>
+      <Form />
+      <Result />
     </AppWrapper>
   );
 }
 
 export default App;
+
+const AppWrapper = styled.div`
+  width: 100vw;
+  min-height: 100vh;
+  padding-top: 75px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: center;
+
+  background: ${props => props.theme.darkBlue};
+`;

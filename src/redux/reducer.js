@@ -1,13 +1,12 @@
-
 const initialState = {
- hoursToWakeUp: 0,
- minutesToWakeUp: 0,
- isAm: true,
- isForward: false
+  hoursToWakeUp: 0,
+  minutesToWakeUp: 0,
+  isAm: true,
+  isForward: false,
 };
 
-const reducer = function(state = initialState, action) {
-  switch(action.type) {
+const reducer = function (state = initialState, action) {
+  switch (action.type) {
     case 'SET_JUST_HRS':
       return {
         ...state,
@@ -23,7 +22,7 @@ const reducer = function(state = initialState, action) {
         ...state,
         isAm: action.item,
       };
-    case 'SET_HRS_AND_MINS' :
+    case 'SET_HRS_AND_MINS':
       return {
         ...state,
         hoursToWakeUp: action.item.hrs,
@@ -38,6 +37,6 @@ const reducer = function(state = initialState, action) {
     default:
       return state;
   }
-}
+};
 
 export default reducer;
