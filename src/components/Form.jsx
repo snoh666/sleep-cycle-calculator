@@ -28,13 +28,15 @@ function Form({ setHrsMins }) {
       }
     } else if (value < 0 || value.length === 0) {
       if (e === 'decrease') {
-        setHours(0);
-      } else {
         setHours(23);
+      } else {
+        setHours(0);
       }
     } else {
       setHours(parseInt(value));
     }
+
+    onFormChange();
   };
 
   const updateMinutes = e => {
@@ -62,12 +64,14 @@ function Form({ setHrsMins }) {
     } else {
       setMinutes(parseInt(value));
     }
+
+    onFormChange();
   };
 
-  const onFormChange = e => {
+  const onFormChange = _ => {
     if (timeoutId) {
       clearInterval(timeoutId);
-      setTimeoutId(true);
+      setTimeoutId(false);
     }
 
     const staticTimeoutId = setTimeout(_ => {
